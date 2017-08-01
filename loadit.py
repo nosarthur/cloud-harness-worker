@@ -15,7 +15,7 @@ def load(job_id):
 
 def main():
     parser = argparse.ArgumentParser(description="Start work load.")
-    parser.add_argument('jobId', help='job id', type=int, dest='job_id')
+    parser.add_argument('job_id', help='job id', type=int)
     args = parser.parse_args()
     load(args.job_id)
 
