@@ -13,7 +13,7 @@ def load(job_id):
     """
     @type job_id: C{int}
     """
-    r = requests.put(os.environ['HARNESS_SERVER'] + 'api/jobstatus/' + str(job_id),
+    r = requests.put(os.environ['HARNESS_SERVER'] + '/api/jobstatus/' + str(job_id),
                      json={'status': 'RUNNING'},
                      headers=headers)
     if r.status_code != 204:
