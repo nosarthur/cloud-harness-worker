@@ -13,11 +13,16 @@ def load(job_id):
     """
     @type job_id: C{int}
     """
-    r = requests.put(os.environ['HARNESS_SERVER'] + '/api/jobstatus/' + str(job_id),
-                     json={'status': 'RUNNING'},
-                     headers=headers)
-    if r.status_code != 204:
-        print('Update failed.')
+    try:
+        server = os.environ['HARNESS_SERVER']
+    except:
+        pass
+    else:
+        r = requests.put(server + '/api/jobstatus/' + str(job_id),
+                         json={'status': 'RUNNING'},
+                         headers=headers)
+        if r.status_code != 204:
+            print('Update failed.')
 
     with open('test.txt', 'w') as f:
         f.write('hello job: %d' % job_id)
