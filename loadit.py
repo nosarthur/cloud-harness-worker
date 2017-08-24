@@ -1,7 +1,7 @@
 import argparse
 import requests
 import os
-# import boto3
+import boto3
 
 
 headers = {'Content-Type': 'application/json',
@@ -21,9 +21,9 @@ def load(job_id):
 
     with open('test.txt', 'w') as f:
         f.write('hello job: %d' % job_id)
-    # s3 = boto3.resource('s3')
-    # with open('test.txt', 'r') as data:
-    #    s3.Bucket('mybucket').put_object(Key='test.txt', Body=data)
+    s3 = boto3.resource('s3')
+    with open('test.txt', 'r') as data:
+        s3.Bucket('harness-bucket').put_object(Key='test.txt', Body=data)
 
 
 
